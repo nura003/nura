@@ -1,0 +1,13 @@
+function listports(){
+
+        echo -e "\n${yellowColour}[*] Extracting information...${endColour}\n"
+        ip_address=$(cat allPorts | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | sort -u)
+        open_ports=$(cat allPorts | grep -oP '\d{1,5}/open' | awk '{print $1}' FS="/" | xargs | tr ' ' ',')
+
+        echo -e "\t${blueColour}[*] IP Address: ${endColour}${grayColour}$ip_address${endColour}"
+        echo -e "\t${blueColour}[*] Open ports: ${endColour}${grayColour}$open_ports${endColour}\n"
+
+        echo $open_ports | tr -d '\n' | xclip -sel clip
+
+        echo -e "${yellowColour}[*] Ports has been copied to clipboard!${endColour}\n"
+}
