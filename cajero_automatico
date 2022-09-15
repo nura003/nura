@@ -1,0 +1,72 @@
+#Cajero_automatico
+
+
+bucle_seguridad_pin = True
+while bucle_seguridad_pin :
+    pin_seguridad = input("Introduzca un pin de 4 digitos") 
+    for i in pin_seguridad:
+        if i not in '0,1,2,3,4,5,6,7,8,9' :
+            print ("Pin invalido, vuelva a introducir el pin.")
+        elif len(pin_seguridad) != 4:
+            print ("Pin invalido, vuelva a introducir su pin")
+            break
+        
+        else :
+            print ("pin agregado con exito!")
+            bucle_seguridad_pin = False 
+            break 
+        
+
+    def introduzca():
+        bucle = True
+        while bucle : 
+            comprobacion = input ("introduzca su pin de seguridad")
+            if comprobacion == pin_seguridad :
+                print ("comprobacion exitosa")
+                bucle = False
+            else :
+                print ("su pin es incorrecto")
+
+    def menu (): 
+        balance = 0
+        bucle = True
+        while bucle:
+            menu = input ("p [retirar en efectivo]\nc [consultar balance]\nd [depositar]\n")
+            if menu == "p": 
+                bucle2 = True
+                menu_retiro = input("q [100]\nr [200]\nd [300]")
+                if menu_retiro == "q" and balance >= 100 :
+                    print ("su dinero ha sido retirado")
+                    balance -= 100
+                elif menu_retiro == "r" and balance >= 100 :
+                    print ("su dinero ha sido retirado")
+                    balance -= 200
+                elif menu_retiro == "d" and balance >= 100 :
+                    print ("su dinero ha sido retirado")
+                    balance -= 300
+                elif menu_retiro == "q" and balance <= 100 :
+                    print ("no tiene balance suficiente")
+                elif menu_retiro == "r" and balance <= 200 :
+                    print ("no tiene balance suficiente")
+                elif menu_retiro == "d" and balance <= 300 :
+                    print ("no tiene balance suficiente")
+        
+            elif menu == "c":
+                print ("su balance es de : {}".format(balance))
+
+            elif menu == "d": 
+                menu_deposito = input ("a [100]\nb [200]\nc [300]\n")
+                if menu_deposito == "a":
+                    print ("Se ha depositado correctamente")
+                    balance += 100
+                    
+                elif menu_deposito == "b":
+                    print ("Se ha depositado correctamente")
+                    balance +=200
+                elif menu_deposito == "c":
+                    print ("Se ha depositado correctamente")
+                    balance += 300      
+
+if __name__ == "__main__":
+    introduzca()
+    menu()
